@@ -1,0 +1,487 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --page-bg: rgb(30, 30, 30);
+  --color: snow;
+  /* linear-gradient(83.21deg,#3245ff,#b845ed) */
+  --primary-gradient: rgb(236, 163, 25);
+  --secondary-gradient: rgb(224, 59, 224);
+
+  --main-padding: 2rem;
+  --example-padding: 1rem;
+
+  counter-reset: exercie 0;
+
+  /* Example - 1 */
+  --shadow-size: 15px;
+  --shadow-color: rgba(237, 6, 6);
+
+  /* Example - 2 */
+  --box-size: 200px;
+  --box-border-radius: 10px;
+
+  /* Example - 3 */
+  --glass-blur: 10px;
+
+  /* Example - 4 */
+  --wrapper-size: 300px;
+  --pixel-size: 20px;
+
+  /* Example - 5 */
+  --btn-padding: 6px 20px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: var(--main-padding);
+  color: var(--color);
+  background-color: black;
+}
+
+.container {
+  border: 2px dashed var(--color);
+  border-radius: 2em;
+  padding: var(--main-padding);
+}
+
+
+main{
+  display: flex;
+  flex-direction: column;
+  border-radius: inherit;
+  gap: var(--main-padding);
+}
+
+header h1 {
+  font-size: 4rem;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(90deg, var(--primary-gradient), var(--secondary-gradient))text;
+  -webkit-text-stroke: 1px rgb(3, 31, 116); /* Border thickness and color */
+  padding: var(--example-padding);
+}
+
+article {
+  counter-increment: exercie 1;
+
+  display: flexbox;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+article.basic{
+  border: 2px solid var(--color);
+  border-radius: inherit;
+  padding: var(--example-padding);
+}
+
+.glass{
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.shadowed{
+  box-shadow: 0px 0px 5px var(--color);
+}
+
+article header {
+  width: 100%;
+  padding: 10px 40px;
+}
+
+article .title {
+  width: max-content;
+  padding: 2px 25px;
+
+  border-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gradient),
+    var(--secondary-gradient)
+  );
+  position: relative;
+}
+
+/* Circled count examples after:inner space and before: gradient border */
+article .title::before,
+article .title::after {
+  content: "";
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: absolute;
+  background: var(--page-bg);
+  top: 50%;
+  left: -10px;
+  translate: -50% -50%;
+}
+
+/* Circle border*/
+article .title::before {
+  padding: 4px;
+  background: linear-gradient(
+    -90deg,
+    var(--primary-gradient),
+    var(--secondary-gradient)
+  );
+  border: 2px solid var(--page-bg);
+}
+
+/* Circled number*/
+article .title::after {
+  content: counter(exercie);
+  font-size: 2.5rem;
+  display: grid;
+  place-items: center;
+}
+
+article .content {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: var(--example-padding);
+}
+
+/* Example - 1 */
+
+i {
+  font-size: 4rem;
+}
+
+i.left {
+  box-shadow: 0px 0px var(--shadow-size) var(--shadow-color);
+}
+
+i.right {
+  filter: drop-shadow(0px 0px var(--shadow-size) var(--shadow-color));
+}
+
+/* Example - 2 */
+.box {
+  width: var(--box-size, 100px);
+  aspect-ratio: 16/9;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 10px solid rgb(255, 255, 255, 0.2);
+  border-radius: var(--box-border-radius, 5px);
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--primary-gradient),
+    var(--secondary-gradient)
+  );
+  user-select: none;
+}
+
+.border-box {
+  background-clip: border-box; /* The background covers full area including border*/
+}
+
+.padding-box {
+  background-clip: padding-box; /* The background stops at the padding edge, excluding the border */
+}
+
+.content-box {
+  background-clip: content-box; /* The background stops at content edge, excluding the padding and border */
+}
+
+.gradient-box {
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary-gradient), var(--secondary-gradient))text,
+    linear-gradient(135deg, rgb(46, 45, 45), rgb(35, 32, 32)) padding-box,
+    linear-gradient(135deg, var(--primary-gradient), var(--secondary-gradient))
+      border-box;
+}
+
+/* Example - 3 */
+
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+/* Example - 3 - DAW roadmap */
+.quote-card section {
+  margin-bottom: 20px;
+  font-style: normal;
+}
+
+.quote-card section li {
+  list-style: none;
+  padding: 5px;
+}
+
+.quote-card section li.easy::before {
+  content: "🟢 - ";
+}
+
+.quote-card section li.medium::before {
+  content: " 🟡 - ";
+}
+
+.quote-card section li.hard::before {
+  content: " 🔴 - ";
+}
+
+.quote-card section li.the-best::before {
+  content: " 🌟 - ";
+}
+
+/* Example - 3 -cite and blockquote*/
+
+.quote-card p {
+  margin-bottom: 20px;
+  font-weight: 900;
+  color: var(--secondary-gradient);
+}
+
+.quote-card q {
+  font-weight: normal;
+  color: var(--color);
+}
+
+.quote-card blockquote {
+  border-left: 5px solid var(--secondary-gradient);
+  border-radius: 5px;
+  padding: var(--example-padding);
+}
+
+.quote-card blockquote::before {
+  content: "-";
+  font-size: 30px;
+}
+
+.quote-card cite {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--secondary-gradient);
+  text-align: right;
+}
+
+/* Example - 4 */
+
+.wrapper {
+  width: var(--wrapper-size);
+  aspect-ratio: 1;
+
+  background: linear-gradient(transparent 49.8%, white, transparent 50.2%),
+    linear-gradient(90deg, transparent 49.8%, white, transparent 50.2%),
+    rgb(255 255 255 / 5%);
+
+  position: relative;
+}
+
+.pixel {
+  width: var(--pixel-size, 10px);
+  height: var(--pixel-size, 10px);
+  position: absolute;
+  background-color: var(--primary-gradient);
+}
+
+.pixel.centered {
+  background-color: var(--secondary-gradient);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.pixel.circle {
+  border-radius: 50%;
+  background-color: yellow;
+  top: 10%;
+  right: 10%;
+}
+
+.pixel.rectangle {
+  width: calc(var(--pixel-size) * 3);
+  left: 50%;
+  bottom: 0;
+}
+
+.pixel.free {
+  background-color: yellowgreen;
+  top: 50%;
+  left: -20%;
+}
+
+/* Example - 5 */
+
+button.btn {
+  font-size: 1.5em;
+  padding: var(--btn-padding);
+  border-radius: var(--box-border-radius);
+  color: var(--btn-secondary-color);
+  background: var(--btn-primary-color);
+  border: 2px solid var(--btn-secondary-color);
+  transition: 250ms ease;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--btn-primary-color);
+    background: var(--btn-secondary-color);
+    border-color: var(--btn-primary-color);
+  }
+}
+
+button.btn.green {
+  --btn-primary-color: rgb(29, 120, 90);
+  --btn-secondary-color: snow;
+}
+button.btn.blue {
+  --btn-primary-color: rgb(14, 116, 157);
+  --btn-secondary-color: snow;
+}
+
+button.btn.yellow {
+  --btn-primary-color: rgb(236, 228, 12);
+  --btn-secondary-color: black;
+}
+
+/* Example - 6 */
+
+.advanced-quote blockquote {
+    font-size: 1.2rem;
+
+    display: flex;
+    flex-direction: column;
+    padding: var(--example-padding);
+    border-radius: 4px;
+
+    position: relative;
+    transition: 500ms ease;
+    &:hover{
+        background: rgb(0 0 0 / 20%);
+    }
+}
+
+.advanced-quote blockquote::before {
+    content: '';
+    width: 0px;
+    height: 100%;
+    border-top-left-radius:  inherit;
+    border-bottom-left-radius:  inherit;
+    background: linear-gradient(var(--primary-gradient), var(--secondary-gradient));
+    position:absolute;
+    top: 50%;
+    left:0;
+    transform: translateY(-50%);
+    transition: 300ms;
+}
+
+.advanced-quote blockquote:hover::before {
+    width: 6px;
+    border: 1px solid rgb(255 255 255/ .3);
+}
+
+.advanced-quote cite {
+    align-self: end;
+    width: max-content;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--secondary-gradient);
+    text-align: right;
+    position: relative;
+
+}
+
+.advanced-quote cite::before {
+    content: '';
+
+    width: 0;
+    height: 2px;
+
+    background: linear-gradient(90deg, transparent, var(--secondary-gradient));
+    position: absolute;
+    bottom: 0;
+    left:0;
+
+    transition: .3s ease-in-out;
+}
+
+.advanced-quote cite:hover::before {
+    width: 100%;
+}
+
+/* Example - 7 */
+a.btn{
+    font-size: 2rem;
+    color: var(--color);
+    text-decoration: none;
+    padding: var(--btn-padding);
+    border-radius: var(--box-border-radius);
+    border: 5px solid transparent;
+    transition: .3s;
+    &:hover{
+        color: color-mix(in srgb, var(--color) , black 20%);
+    }
+}
+
+a.btn.easy{    
+    background: 
+        linear-gradient( rgb(10 10 10), rgb(45 45 45), rgb(10 10 10)) padding-box,
+        conic-gradient(red, yellow, green, aqua, rgb(25, 0, 255), rgb(255, 0, 255), red) border-box;
+}
+
+a.btn.hard{
+    position: relative;
+    background: linear-gradient( rgb(10 10 10), rgb(45 45 45), rgb(10 10 10)) padding-box;
+}
+
+a.btn.hard::before{
+    content: '';
+    border-radius: inherit;
+    position: absolute;
+
+    inset: -3px;
+    z-index: -1;
+    opacity: 0;
+    background: 
+    conic-gradient(red, yellow, green, aqua, rgb(25, 0, 255), rgb(255, 0, 255), red) border-box;
+    filter: blur(5px);
+    transition: .5s;
+}
+
+a.btn.hard:hover::before{
+    opacity: 1;
+}
+
+
+a.btn.xtreme{
+    position: relative;
+    background: linear-gradient( rgb(10 10 10), rgb(45 45 45), rgb(10 10 10)) padding-box;
+}
+
+a.btn.xtreme::before, a.btn.xtreme::after{
+    content: '';
+    border-radius: inherit;
+    position: absolute;
+    inset: -4px;
+    z-index: -1;
+
+    background: 
+    conic-gradient(red, yellow, green, aqua, rgb(25, 0, 255), rgb(255, 0, 255), red) border-box;
+    transition: 0.5s;
+}
+
+a.btn.xtreme:hover::before{
+    filter: blur(6px);
+} 
+
+a.btn.xtreme::after{
+    opacity: 0.2;
+    /* border: 1px solid white; */
+}
