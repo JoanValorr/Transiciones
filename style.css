@@ -7,7 +7,6 @@
 :root {
   --page-bg: rgb(30, 30, 30);
   --color: snow;
-  /* linear-gradient(83.21deg,#3245ff,#b845ed) */
   --primary-gradient: rgb(236, 163, 25);
   --secondary-gradient: rgb(224, 59, 224);
   --primary-gradient-2: rgb(185, 250, 34);
@@ -18,21 +17,17 @@
 
   counter-reset: exercie 0;
 
-  /* Example - 1 */
   --pink: rgb(255, 50, 255);
 
-  /* Example - 2 */
   --box-size: 200px;
   --box-border-radius: 10px;
 
-  /* Example - 3 */
   --glass-blur: 10px;
 
-  /* Example - 4 */
+
   --wrapper-size: 300px;
   --pixel-size: 20px;
 
-  /* Example - 5 */
   --btn-padding: 6px 20px;
 }
 body {
@@ -61,7 +56,7 @@ header h1 {
   text-align: center;
   color: transparent;
   background: linear-gradient(90deg, var(--primary-gradient), var(--secondary-gradient))text;
-  -webkit-text-stroke: 1px rgb(3, 31, 116); /* Border thickness and color */
+  -webkit-text-stroke: 1px rgb(3, 31, 116); 
   padding: var(--example-padding);
 }
 
@@ -102,7 +97,6 @@ article .titulo {
   position: relative;
 }
 
-/* Circled count examples after:inner space and before: gradient border */
 article .titulo::before,
 article .titulo::after {
   content: "";
@@ -116,7 +110,6 @@ article .titulo::after {
   translate: -50% -50%;
 }
 
-/* Circle border*/
 article .titulo::before {
   padding: 4px;
   background: linear-gradient(
@@ -127,7 +120,6 @@ article .titulo::before {
   border: 2px solid var(--page-bg);
 }
 
-/* Circled number*/
 article .titulo::after {
   content: counter(exercie);
   font-size: 2.5rem;
@@ -142,7 +134,6 @@ article .contenido {
   padding: var(--example-padding);
 }
 
-/* Example - 1 */
 
 button {
   border-radius: 10px;
@@ -232,8 +223,6 @@ button.borde-animado::after {
 }
 
 
-
-/* Example - 2 */
 .boton-parpadeante {
   width: 60px;
   height: 60px;
@@ -265,7 +254,6 @@ button.borde-animado::after {
   translate: -50% -50%;
 }
 
-/* Circle border*/
 .boton-parpadeante::before {
   padding: 4px;
   background: linear-gradient(
@@ -293,24 +281,20 @@ button.borde-animado::after {
 }
 
 
-/* Example - 3 */
-
 .seccion-carga {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-/* Contenedor de la barra con espacio para label */
 .envoltorio-barra.con-etiqueta {
   position: relative;
   width: 100%;
   border: 1px solid var(--color);
   border-radius: 12px;
-  padding: 1.5rem 0.5rem 0.5rem 0.5rem; /* espacio arriba para la label */
+  padding: 1.5rem 0.5rem 0.5rem 0.5rem; 
   padding: 1rem 0.8rem;
 }
 
-/* Estilo de la etiqueta dentro del borde */
 .etiqueta-barra {
   position: absolute;
   top: -0.55rem;
@@ -322,7 +306,6 @@ button.borde-animado::after {
   z-index: 1;
 }
 
-/* Barra interna con bordes redondeados */
 .barra-completa {
   width: 100%;
   height: 40px;
@@ -331,7 +314,6 @@ button.borde-animado::after {
   position: relative;
 }
 
-/* Fondo diagonal animado con degradado */
 .cargador.diagonal {
   height: 100%;
   width: 0%;
@@ -353,7 +335,6 @@ button.borde-animado::after {
 }
 
 
-/* Animación asignada según clase */
 .cargador.linear {
   animation: fill-bar 10s linear forwards;
 }
@@ -374,7 +355,6 @@ button.borde-animado::after {
 }
 
 
-/* Example - 4 */
 
 .menu {
   display: flex;
@@ -407,7 +387,7 @@ button.borde-animado::after {
   width: 100%;
   background: linear-gradient(90deg, var(--primary-gradient), var(--secondary-gradient));
   transform: scaleX(0);
-  transform-origin: center; /* ← Desde el centro hacia los lados */
+  transform-origin: center; 
   transition: transform 0.3s ease;
 }
 
@@ -422,7 +402,6 @@ button.borde-animado::after {
   -webkit-background-clip: text;
 }
 
-/* Example - 5 */
 
 .pista-pacman {
   position: relative;
@@ -463,11 +442,6 @@ button.borde-animado::after {
 }
 
 
-
-
-
-/* Example - 6 */
-
 .carga-borde-elegante {
   position: relative;
   margin: auto;
@@ -483,8 +457,6 @@ button.borde-animado::after {
   background: #111;
 }
 
-
-/* fancy border efecto glow */
 .carga-borde-elegante::before {
   content: '';
   position: absolute;
@@ -510,7 +482,6 @@ button.borde-animado::after {
   border-radius: inherit;
 }
 
-/* loading dots animados */
 .puntos-carga {
   display: flex;
   gap: 20px;
@@ -539,8 +510,6 @@ button.borde-animado::after {
   animation-delay: 0.4s;
 }
 
-
-/* Pulso de los puntos */
 @keyframes dotPulse {
   0%,
   80%,
