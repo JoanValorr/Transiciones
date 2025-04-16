@@ -10,6 +10,8 @@
   /* linear-gradient(83.21deg,#3245ff,#b845ed) */
   --primary-gradient: rgb(236, 163, 25);
   --secondary-gradient: rgb(224, 59, 224);
+  --primary-gradient-2: rgb(185, 250, 34);
+  --secondary-gradient-2: rgb(255, 50, 255);
 
   --main-padding: 2rem;
   --example-padding: 1rem;
@@ -17,8 +19,7 @@
   counter-reset: exercie 0;
 
   /* Example - 1 */
-  --shadow-size: 15px;
-  --shadow-color: rgba(237, 6, 6);
+  --pink: rgb(255, 50, 255);
 
   /* Example - 2 */
   --box-size: 200px;
@@ -34,15 +35,14 @@
   /* Example - 5 */
   --btn-padding: 6px 20px;
 }
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   padding: var(--main-padding);
   color: var(--color);
-  background-color: black;
+  background: var(--page-bg);
 }
 
-.container {
+.contenedor {
   border: 2px dashed var(--color);
   border-radius: 2em;
   padding: var(--main-padding);
@@ -73,19 +73,15 @@ article {
   overflow: hidden;
 }
 
-article.basic{
+article.vidrio{
   border: 2px solid var(--color);
   border-radius: inherit;
   padding: var(--example-padding);
 }
 
-.glass{
+.basico{
   background: rgb(255 255 255 / 5%);
   backdrop-filter: blur(var(--glass-blur));
-}
-
-.shadowed{
-  box-shadow: 0px 0px 5px var(--color);
 }
 
 article header {
@@ -93,7 +89,7 @@ article header {
   padding: 10px 40px;
 }
 
-article .title {
+article .titulo {
   width: max-content;
   padding: 2px 25px;
 
@@ -107,8 +103,8 @@ article .title {
 }
 
 /* Circled count examples after:inner space and before: gradient border */
-article .title::before,
-article .title::after {
+article .titulo::before,
+article .titulo::after {
   content: "";
   width: 50px;
   aspect-ratio: 1;
@@ -121,7 +117,7 @@ article .title::after {
 }
 
 /* Circle border*/
-article .title::before {
+article .titulo::before {
   padding: 4px;
   background: linear-gradient(
     -90deg,
@@ -132,14 +128,14 @@ article .title::before {
 }
 
 /* Circled number*/
-article .title::after {
+article .titulo::after {
   content: counter(exercie);
   font-size: 2.5rem;
   display: grid;
   place-items: center;
 }
 
-article .content {
+article .contenido {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -148,340 +144,419 @@ article .content {
 
 /* Example - 1 */
 
-i {
-  font-size: 4rem;
+button {
+  border-radius: 10px;
 }
 
-i.left {
-  box-shadow: 0px 0px var(--shadow-size) var(--shadow-color);
+button.relleno-izquierda {
+  position: relative;
+  overflow: hidden;
+  color: var(--pink);
+  background-color: transparent;
+  border: 2px solid var(--pink);
+  padding: var(--btn-padding);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.4s ease;
 }
 
-i.right {
-  filter: drop-shadow(0px 0px var(--shadow-size) var(--shadow-color));
+button.relleno-izquierda::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--pink);
+  z-index: 0;
+  transition: width 0.4s ease;
 }
+
+button.relleno-izquierda:hover::before {
+  width: 100%;
+}
+
+button.relleno-izquierda:hover {
+  color: var(--page-bg);
+}
+
+button.relleno-izquierda span {
+  position: relative;
+  z-index: 1;
+}
+
+button.borde-animado {
+  position: relative;
+  padding: var(--btn-padding);
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: var(--pink);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 0;
+  z-index: 1;
+}
+
+button.borde-animado:hover::before,
+button.borde-animado:hover::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, var(--pink), transparent);
+  opacity: 1;
+  z-index: -1;
+}
+
+button.borde-animado::before {
+  top: 0;
+  left: -100%;
+  animation: borderTopAnim 3s ease infinite;
+}
+
+button.borde-animado::after {
+  bottom: 0;
+  right: -100%;
+  animation: borderBottomAnim 3s ease infinite;
+}
+
+@keyframes borderTopAnim {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes borderBottomAnim {
+  0% { right: -100%; }
+  100% { right: 100%; }
+}
+
+
 
 /* Example - 2 */
-.box {
-  width: var(--box-size, 100px);
-  aspect-ratio: 16/9;
+.boton-parpadeante {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  border: 10px solid rgb(255, 255, 255, 0.2);
-  border-radius: var(--box-border-radius, 5px);
-  text-align: center;
-  background: linear-gradient(
-    135deg,
-    var(--primary-gradient),
-    var(--secondary-gradient)
-  );
-  user-select: none;
-}
-
-.border-box {
-  background-clip: border-box; /* The background covers full area including border*/
-}
-
-.padding-box {
-  background-clip: padding-box; /* The background stops at the padding edge, excluding the border */
-}
-
-.content-box {
-  background-clip: content-box; /* The background stops at content edge, excluding the padding and border */
-}
-
-.gradient-box {
-  color: transparent;
-  background: linear-gradient(135deg, var(--primary-gradient), var(--secondary-gradient))text,
-    linear-gradient(135deg, rgb(46, 45, 45), rgb(35, 32, 32)) padding-box,
-    linear-gradient(135deg, var(--primary-gradient), var(--secondary-gradient))
-      border-box;
-}
-
-/* Example - 3 */
-
-.quote-card {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-
-  font-size: 1.2rem;
-  font-style: italic;
-}
-
-/* Example - 3 - DAW roadmap */
-.quote-card section {
-  margin-bottom: 20px;
-  font-style: normal;
-}
-
-.quote-card section li {
-  list-style: none;
-  padding: 5px;
-}
-
-.quote-card section li.easy::before {
-  content: "🟢 - ";
-}
-
-.quote-card section li.medium::before {
-  content: " 🟡 - ";
-}
-
-.quote-card section li.hard::before {
-  content: " 🔴 - ";
-}
-
-.quote-card section li.the-best::before {
-  content: " 🌟 - ";
-}
-
-/* Example - 3 -cite and blockquote*/
-
-.quote-card p {
-  margin-bottom: 20px;
-  font-weight: 900;
-  color: var(--secondary-gradient);
-}
-
-.quote-card q {
-  font-weight: normal;
-  color: var(--color);
-}
-
-.quote-card blockquote {
-  border-left: 5px solid var(--secondary-gradient);
-  border-radius: 5px;
-  padding: var(--example-padding);
-}
-
-.quote-card blockquote::before {
-  content: "-";
-  font-size: 30px;
-}
-
-.quote-card cite {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-  color: var(--secondary-gradient);
-  text-align: right;
-}
-
-/* Example - 4 */
-
-.wrapper {
-  width: var(--wrapper-size);
-  aspect-ratio: 1;
-
-  background: linear-gradient(transparent 49.8%, white, transparent 50.2%),
-    linear-gradient(90deg, transparent 49.8%, white, transparent 50.2%),
-    rgb(255 255 255 / 5%);
-
   position: relative;
+
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s;
 }
 
-.pixel {
-  width: var(--pixel-size, 10px);
-  height: var(--pixel-size, 10px);
+.boton-parpadeante::before,
+.boton-parpadeante::after {
+  content: "";
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
   position: absolute;
-  background-color: var(--primary-gradient);
-}
-
-.pixel.centered {
-  background-color: var(--secondary-gradient);
+  background: var(--page-bg);
   top: 50%;
-  left: 50%;
+  left: 30px;
   translate: -50% -50%;
 }
 
-.pixel.circle {
-  border-radius: 50%;
-  background-color: yellow;
-  top: 10%;
-  right: 10%;
+/* Circle border*/
+.boton-parpadeante::before {
+  padding: 4px;
+  background: linear-gradient(
+    -90deg,
+    var(--primary-gradient),
+    var(--secondary-gradient)
+  );
 }
 
-.pixel.rectangle {
-  width: calc(var(--pixel-size) * 3);
-  left: 50%;
+.reproducir {
+  z-index: 1;
+  font-size: 1.7rem;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--primary-gradient);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(50, 69, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(50, 69, 255, 0);
+  }
+}
+
+
+/* Example - 3 */
+
+.seccion-carga {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+/* Contenedor de la barra con espacio para label */
+.envoltorio-barra.con-etiqueta {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--color);
+  border-radius: 12px;
+  padding: 1.5rem 0.5rem 0.5rem 0.5rem; /* espacio arriba para la label */
+  padding: 1rem 0.8rem;
+}
+
+/* Estilo de la etiqueta dentro del borde */
+.etiqueta-barra {
+  position: absolute;
+  top: -0.55rem;
+  left: 0.8rem;
+  background: rgb(41, 41, 41);
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color);
+  z-index: 1;
+}
+
+/* Barra interna con bordes redondeados */
+.barra-completa {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fondo diagonal animado con degradado */
+.cargador.diagonal {
+  height: 100%;
+  width: 0%;
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--primary-gradient),
+    var(--primary-gradient) 20px,
+    var(--secondary-gradient) 20px,
+    var(--secondary-gradient) 40px
+  );
+  background-size: 200% 100%;
+  background-position-x: 0%;
+  border-radius: inherit;
+}
+
+@keyframes fill-bar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+
+/* Animación asignada según clase */
+.cargador.linear {
+  animation: fill-bar 10s linear forwards;
+}
+.cargador.ease-in {
+  animation: fill-bar 10s ease-in forwards;
+}
+.cargador.ease-out {
+  animation: fill-bar 10s ease-out forwards;
+}
+.cargador.ease-in-out {
+  animation: fill-bar 11s ease-in-out forwards;
+}
+.cargador.ease {
+  animation: fill-bar 11s ease forwards;
+}
+.cargador.steps {
+  animation: fill-bar 11s steps(11, start) forwards;
+}
+
+
+/* Example - 4 */
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  background-color: #525252;
+  width: 100%;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu a {
+  position: relative;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--color);
+  padding: 5px 0;
+  transition: color 0.3s ease;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
   bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary-gradient), var(--secondary-gradient));
+  transform: scaleX(0);
+  transform-origin: center; /* ← Desde el centro hacia los lados */
+  transition: transform 0.3s ease;
 }
 
-.pixel.free {
-  background-color: yellowgreen;
-  top: 50%;
-  left: -20%;
+.menu a:hover::after {
+  transform: scaleX(1);
+}
+
+.menu a:hover {
+  color: transparent;
+  background: linear-gradient(90deg, var(--primary-gradient), var(--secondary-gradient));
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 /* Example - 5 */
 
-button.btn {
-  font-size: 1.5em;
-  padding: var(--btn-padding);
-  border-radius: var(--box-border-radius);
-  color: var(--btn-secondary-color);
-  background: var(--btn-primary-color);
-  border: 2px solid var(--btn-secondary-color);
-  transition: 250ms ease;
-  cursor: pointer;
-  user-select: none;
+.pista-pacman {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+  background: transparent;
+}
 
-  &:hover {
-    color: var(--btn-primary-color);
-    background: var(--btn-secondary-color);
-    border-color: var(--btn-primary-color);
+.pacman {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  animation: move-pacman 10s linear infinite;
+}
+
+@keyframes move-pacman {
+  0% {
+    left: 0%;
+    transform: scaleX(1);
+  }
+  45% {
+    left: 95%;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 95%;
+    transform: scaleX(-1);
+  }
+  95% {
+    left: 0%;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 0%;
+    transform: scaleX(1);
   }
 }
 
-button.btn.green {
-  --btn-primary-color: rgb(29, 120, 90);
-  --btn-secondary-color: snow;
-}
-button.btn.blue {
-  --btn-primary-color: rgb(14, 116, 157);
-  --btn-secondary-color: snow;
-}
 
-button.btn.yellow {
-  --btn-primary-color: rgb(236, 228, 12);
-  --btn-secondary-color: black;
-}
+
+
 
 /* Example - 6 */
 
-.advanced-quote blockquote {
-    font-size: 1.2rem;
-
-    display: flex;
-    flex-direction: column;
-    padding: var(--example-padding);
-    border-radius: 4px;
-
-    position: relative;
-    transition: 500ms ease;
-    &:hover{
-        background: rgb(0 0 0 / 20%);
-    }
-}
-
-.advanced-quote blockquote::before {
-    content: '';
-    width: 0px;
-    height: 100%;
-    border-top-left-radius:  inherit;
-    border-bottom-left-radius:  inherit;
-    background: linear-gradient(var(--primary-gradient), var(--secondary-gradient));
-    position:absolute;
-    top: 50%;
-    left:0;
-    transform: translateY(-50%);
-    transition: 300ms;
-}
-
-.advanced-quote blockquote:hover::before {
-    width: 6px;
-    border: 1px solid rgb(255 255 255/ .3);
-}
-
-.advanced-quote cite {
-    align-self: end;
-    width: max-content;
-    margin-top: 10px;
-    font-weight: bold;
-    color: var(--secondary-gradient);
-    text-align: right;
-    position: relative;
-
-}
-
-.advanced-quote cite::before {
-    content: '';
-
-    width: 0;
-    height: 2px;
-
-    background: linear-gradient(90deg, transparent, var(--secondary-gradient));
-    position: absolute;
-    bottom: 0;
-    left:0;
-
-    transition: .3s ease-in-out;
-}
-
-.advanced-quote cite:hover::before {
-    width: 100%;
-}
-
-/* Example - 7 */
-a.btn{
-    font-size: 2rem;
-    color: var(--color);
-    text-decoration: none;
-    padding: var(--btn-padding);
-    border-radius: var(--box-border-radius);
-    border: 5px solid transparent;
-    transition: .3s;
-    &:hover{
-        color: color-mix(in srgb, var(--color) , black 20%);
-    }
-}
-
-a.btn.easy{    
-    background: 
-        linear-gradient( rgb(10 10 10), rgb(45 45 45), rgb(10 10 10)) padding-box,
-        conic-gradient(red, yellow, green, aqua, rgb(25, 0, 255), rgb(255, 0, 255), red) border-box;
-}
-
-a.btn.hard{
-    position: relative;
-    background: linear-gradient( rgb(10 10 10), rgb(45 45 45), rgb(10 10 10)) padding-box;
-}
-
-a.btn.hard::before{
-    content: '';
-    border-radius: inherit;
-    position: absolute;
-
-    inset: -3px;
-    z-index: -1;
-    opacity: 0;
-    background: 
-    conic-gradient(red, yellow, green, aqua, rgb(25, 0, 255), rgb(255, 0, 255), red) border-box;
-    filter: blur(5px);
-    transition: .5s;
-}
-
-a.btn.hard:hover::before{
-    opacity: 1;
+.carga-borde-elegante {
+  position: relative;
+  margin: auto;
+  padding: 0px 20px;
+  width: 500px;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  z-index: 0;
+  background: #111;
 }
 
 
-a.btn.xtreme{
-    position: relative;
-    background: linear-gradient( rgb(10 10 10), rgb(45 45 45), rgb(10 10 10)) padding-box;
+/* fancy border efecto glow */
+.carga-borde-elegante::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    var(--primary-gradient-2),
+    var(--secondary-gradient-2),
+    var(--primary-gradient-2)
+  );
+  filter: blur(20px);
+  opacity: 1;
+  z-index: -1;
+  border-radius: inherit;
 }
 
-a.btn.xtreme::before, a.btn.xtreme::after{
-    content: '';
-    border-radius: inherit;
-    position: absolute;
-    inset: -4px;
-    z-index: -1;
 
-    background: 
-    conic-gradient(red, yellow, green, aqua, rgb(25, 0, 255), rgb(255, 0, 255), red) border-box;
-    transition: 0.5s;
+.carga-borde-elegante::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  background: #111;
+  z-index: -1;
+  border-radius: inherit;
 }
 
-a.btn.xtreme:hover::before{
-    filter: blur(6px);
-} 
+/* loading dots animados */
+.puntos-carga {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-30px);
+}
 
-a.btn.xtreme::after{
+
+.puntos-carga span {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: dotPulse 1.5s infinite ease-in-out;
+}
+
+.puntos-carga span:nth-child(1) {
+  animation-delay: 0s;
+}
+.puntos-carga span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.puntos-carga span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+
+/* Pulso de los puntos */
+@keyframes dotPulse {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.8);
     opacity: 0.2;
-    /* border: 1px solid white; */
+  }
+  40% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.espacio {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  margin: 10px 0;
 }

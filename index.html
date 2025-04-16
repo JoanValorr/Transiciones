@@ -1,89 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Effects</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>CSS Effects Example</h1>
-        </header> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B6 - CSS Effects</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="contenedor">
+      <header>
+        <h1>CSS Effects Example</h1>
+      </header>
 
-        <main>
-            
-            <article class="basic glass">
-                <header>
-                    <h2 class="title">Basic animation</h2>
-                </header>
-                <div class="content">
-                    <button></button>
-                    <button></button>
-                </div>
-            </article>
+      <main>
+        <article class="vidrio basico">
+          <header>
+            <h2 class="titulo">Animated buttons</h2>
+          </header>
+          <div class="contenido">
+            <button class="relleno-izquierda"><span>Fill left</span></button>
+            <button class="borde-animado">Animated border</button>
+          </div>
+        </article>
 
-            <article class="basic glass">
-                <header>
-                    <h2 class="title">Blink button </h2>
-                </header>
-                <div class="content">
-                    <div class="box border-box">border-box</div>
+        <article class="vidrio basico">
+          <header>
+            <h2 class="titulo">Blink button</h2>
+          </header>
+          <div class="contenido">
+            <button class="boton-parpadeante">
+              <i class="reproducir fas fa-circle-play"></i>
+            </button>
+          </div>
+        </article>
 
-                </div>
-            </article>
+        <article class="vidrio basico">
+          <header>
+            <h2 class="titulo">Loading bar</h2>
+          </header>
+          <div class="contenido seccion-carga">
+            <div class="envoltorio-barra con-etiqueta">
+              <label class="etiqueta-barra">lineal</label>
+              <div class="barra-completa">
+                <div class="cargador diagonal linear"></div>
+              </div>
+            </div>
+            <div class="envoltorio-barra con-etiqueta">
+              <label class="etiqueta-barra">ease-in</label>
+              <div class="barra-completa">
+                <div class="cargador diagonal ease-in"></div>
+              </div>
+            </div>
+            <div class="envoltorio-barra con-etiqueta">
+              <label class="etiqueta-barra">ease-out</label>
+              <div class="barra-completa">
+                <div class="cargador diagonal ease-out"></div>
+              </div>
+            </div>
+            <div class="envoltorio-barra con-etiqueta">
+              <label class="etiqueta-barra">ease-in-out</label>
+              <div class="barra-completa">
+                <div class="cargador diagonal ease-in-out"></div>
+              </div>
+            </div>
+            <div class="envoltorio-barra con-etiqueta">
+              <label class="etiqueta-barra">ease</label>
+              <div class="barra-completa">
+                <div class="cargador diagonal ease"></div>
+              </div>
+            </div>
+            <div class="envoltorio-barra con-etiqueta">
+              <label class="etiqueta-barra">steps</label>
+              <div class="barra-completa">
+                <div class="cargador diagonal steps"></div>
+              </div>
+            </div>
+          </div>
+        </article>
 
-            <article class="basic glass">
-                <header>
-                    <h2 class="title">loading bar</h2>
-                </header>
-                <div class="content quote-card">
-                    
-                </div>
-            </article>
+        <article class="vidrio basico">
+          <header>
+            <h2 class="titulo">Fancy menu</h2>
+          </header>
+          <div class="contenido menu-navegacion">
+            <nav class="menu">
+              <a href="#">Inicio</a>
+              <a href="#">Acerca de</a>
+              <a href="#">Servicios</a>
+              <a href="#">Portafolio</a>
+              <a href="#">Contacto</a>
+            </nav>
+          </div>
+        </article>
 
-            <article class="basic glass">
-                <header>
-                    <h2 class="title">Position: relative & absolute</h2>
-                </header>
-                <div class="content">
+        <article class="vidrio basico">
+          <header>
+            <h2 class="titulo">Pacman</h2>
+          </header>
+          <div class="contenido">
+            <div class="contenido pista-pacman">
+              <!-- Pac-Man SVG -->
+              <div class="pacman">
+                <svg
+                  height="80px"
+                  width="80px"
+                  viewBox="0 0 52 52"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path
+                      style="fill: #f0c419"
+                      d="M44.385,44.385c-10.154,10.154-26.616,10.154-36.77,0s-10.154-26.616,0-36.77s26.616-10.154,36.77,0 L26,26L44.385,44.385z"
+                    />
+                    <circle style="fill: #556080" cx="23" cy="12" r="3" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
 
-                </div>
-            </article>
+        <div class="espacio"></div>
 
-            <article class="basic glass">
-                <header>
-                    <h2 class="title">Buttons</h2>
-                </header>
-                <div class="content">
-                    <button type="button" class="btn green">click me</button>
-                    <button type="button" class="btn blue">click me</button>
-                    <button type="button" class="btn yellow">click me</button>
-                </div>
-            </article>
+        <article class="carga-borde-elegante">
+          <header>
+            <h2 class="titulo">Fancy border loading . . .</h2>
+          </header>
+          <div class="puntos-carga">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </article>
 
+        <div class="espacio"></div>
 
-            <article class="basic glass">
-                <header>
-                    <h2 class="title">::before & ::after + position</h2>
-                </header>
-                <div class="content advanced-quote">
-
-                </div>
-            </article>
-
-            <article class="basic glass" id="buttons-advanced">
-                <header>
-                    <h2 class="title">Button advanced</h2>
-                </header>
-                <div class="content">
-
-                </div>
-            </article>
-
-        </main>
+        <article class="carga-borde-asombroso">
+          <header>
+            <h2 class="titulo">Possibly the most awesome fancy border effect ever seen</h2>
+          </header>
+        </article>
+      </main>
     </div>
-</body>
+  </body>
 </html>
